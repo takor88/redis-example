@@ -18,8 +18,9 @@ app.get('/',function(req,res){
 app.post('/profile',function(req,res,next){
     
 })
-app.get('/profile/:name',function(req,res,next){
-    
+app.get('/profile/:name',async(req,res,next)=>{
+    const users = await User.find(req.params.name);
+    res.send(users);
 });
 
 app.listen(3001,()=>{
