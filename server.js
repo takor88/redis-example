@@ -21,7 +21,7 @@ app.post('/profile',function(req,res,next){
 })
 app.get('/profile/:name',async(req,res,next)=>{
     const users = await User.findAll({
-        where:{naem:{like:"%"+req.params.name+"%"}}
+        where:['name like ?',"%"+req.params.name+"%"]
     });
     res.send(users);
 });
