@@ -38,6 +38,7 @@ app.post('/profile',function(req,res,next){
 })
 app.get('/profile/:name',function(req,res,next){
     var key = req.params.name; 
+    console.log(key);
     req.cache.get(key,function(err,data){
          if(err){
                console.log(err);
@@ -45,6 +46,7 @@ app.get('/profile/:name',function(req,res,next){
                return;
          }
          var value = JSON.parse(data);
+	 console.log(value);
          res.json(value);
     });
 });
