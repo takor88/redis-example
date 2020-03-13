@@ -6,7 +6,7 @@ const app = express();
 const path =require('path');
 let client = redis.createClient(6379,'127.0.0.1');
 
-app.use(bodyParser().json());
+app.use(bodyParser.json());
 app.use(morgan('combined'));
 app.use(function(req,res,next){
     req.cache = client;
@@ -21,7 +21,7 @@ app.get('/',function(req,res){
 
 app.post('/profile',function(req,res,next){
     req.accepts('application/json');
-    let key = req;
+    let key = req.body;
     console.log(key);
     let value = JSON.stringify(req.body);
     req.cache.set(key,value,function(err,data){
