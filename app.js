@@ -19,8 +19,9 @@ app.get('/',function(req,res){
 
 app.post('/profile',function(req,res,next){
     req.accepts('application/json');
-    var key = req.body.name;
-    var value = JSON.stringify(req.body);
+    let key = req.body;
+    console.log(key);
+    let value = JSON.stringify(req.body);
     req.cache.set(key,value,function(err,data){
          if(err){
                console.log(err);
