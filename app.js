@@ -1,10 +1,12 @@
 const express = require('express');
 const morgan = require('morgan');
 const redis = require('redis');
+const bodyParser = require('body-parser');
 const app = express();
 const path =require('path');
 let client = redis.createClient(6379,'127.0.0.1');
 
+app.use(bodyParser().json());
 app.use(morgan('combined'));
 app.use(function(req,res,next){
     req.cache = client;
