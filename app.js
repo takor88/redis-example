@@ -1,8 +1,10 @@
 const express = require('express');
+const morgan = require('morgan');
 const redis = require('redis');
 const app = express();
 let client = redis.createClient(6379,'127.0.0.1');
 
+app.use(morgan('combined'));
 app.use(function(req,res,next){
     req.cache = client;
     next();
