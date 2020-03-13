@@ -9,6 +9,13 @@ app.use(function(req,res,next){
     req.cache = client;
     next();
 });
+app.set('views', './views');
+app.set('view engin','pug');
+
+app.get('/',function(req,res){
+    res.render('index', {title:"Hey",message:"Hello"});
+});
+
 app.post('/profile',function(req,res,next){
     req.accepts('application/json');
     var key = req.body.name;
