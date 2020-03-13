@@ -19,7 +19,7 @@ app.get('/',function(req,res){
 
 app.post('/profile',function(req,res,next){
     req.accepts('application/json');
-    let key = req.body;
+    let key = req;
     console.log(key);
     let value = JSON.stringify(req.body);
     req.cache.set(key,value,function(err,data){
