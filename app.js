@@ -21,9 +21,10 @@ app.get('/',function(req,res){
 
 app.post('/profile',function(req,res,next){
     req.accepts('application/json');
-    let key = req.body;
-    console.log(key);
+    let key = req.body.name;
     let value = JSON.stringify(req.body);
+    console.log(key);
+    console.log(value);
     req.cache.set(key,value,function(err,data){
          if(err){
                console.log(err);
