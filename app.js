@@ -2,6 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const redis = require('redis');
 const app = express();
+const path =require('path');
 let client = redis.createClient(6379,'127.0.0.1');
 
 app.use(morgan('combined'));
@@ -9,8 +10,8 @@ app.use(function(req,res,next){
     req.cache = client;
     next();
 });
-app.set('views', './views');
-app.set('view engin','pug');
+app.set('views', path.join(__dirname,'views'));
+app.set('view engine','pug');
 
 app.get('/',function(req,res){
     res.render('index', {title:"Hey",message:"Hello"});
