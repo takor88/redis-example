@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const path =require('path');
 const sequelize = require('./models').sequelize;
+const User = require('./models').User;
 sequelize.sync();
 
 app.use(bodyParser.json());
